@@ -50,13 +50,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void guardar() {
         int s, t, v;
-        String d;
-        s = Integer.parseInt(tilSerie.getEditText().getText().toString());
-        v = Integer.parseInt(tilValor.getEditText().getText().toString());
+        String d, ser, val;
+        ser = tilSerie.getEditText().getText().toString();
+        val = tilValor.getEditText().getText().toString();
         t = (int) spnTipo.getSelectedItemId();
         d = tilDesc.getEditText().getText().toString();
-        llenadoArreglo(d, v, s, t);
-        //Toast.makeText(this, "Debe Ingresar los datos de el producto!!", Toast.LENGTH_SHORT).show();
+        if (ser.isEmpty() || val.isEmpty() || d.isEmpty() || t == 0){
+            Toast.makeText(this, "Debe Ingresar TODOS los datos de el producto!!", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            s = Integer.parseInt(tilSerie.getEditText().getText().toString());
+            v = Integer.parseInt(tilValor.getEditText().getText().toString());
+            llenadoArreglo(d, v, s, t);
+            setTextos();
+        }
     }
 
     private void setTextos(){
@@ -132,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
         //Log.d("TAG_", "Nuevo Indice "+indice);
         return indice;
     }
+
     //endregion
 
 
@@ -142,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 guardar();
-                setTextos();
             }
         });
 
