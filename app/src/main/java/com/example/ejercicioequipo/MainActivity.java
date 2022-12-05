@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
     private void retroceder(){
         Equipo E;
         int indice = getIndiceDePagina();
-        if (indice > 0){
-            indice = indice - 1;
+        if (indice > 1){
+            indice = indice - 2;
             E = equipos.get(indice);
             String s, d, v;
             s = String.valueOf(E.getSerie());
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             tilValor.getEditText().setText(v);
             int tipo = E.getTipo();
             spnTipo.setSelection(tipo);
-            String texto = indice + "/" + equipos.size();
+            String texto = (indice+1) + "/" + equipos.size();
             tvPagina.setText(texto);
         }
         else{
